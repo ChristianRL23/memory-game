@@ -1,0 +1,31 @@
+.start-game {
+  background-color: var(--color-quinary-blue);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+
+    h1 {
+      color: var(--color-primary-white);
+      font-size: 3.5rem;
+      margin-bottom: 6rem;
+    }
+
+    &__modal {
+      width: 100%;
+      background-color: var(--color-primary-white);
+      padding: 4rem;
+      border-radius: var(--border-radius-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+  }
+}
