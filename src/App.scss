@@ -5,11 +5,13 @@
   --color-primary-blue: #3695b8;
   --color-secondary-blue: #bcced9;
   --color-tertirary-blue: #7191a5;
-  --color-tertirary-blue: #7191a5;
   --color-quaternary-blue: #304859;
   --color-quinary-blue: #152938;
   --color-primary-white: #fcfcfc;
-  --color-primary-white: #f2f2f2;
+  --color-secondary-white: #f2f2f2;
+  --color-primary-gray: #dfe7ec;
+  --border-radius-primary: 2rem;
+  --border-radius-secondary: 2.6rem;
 }
 
 html {
@@ -24,4 +26,6 @@ html {
 
 body {
   font-family: 'Atkinson Hyperlegible', sans-serif;
+  height: 100vh;
+  width: 100vw;
 }

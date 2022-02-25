@@ -1,0 +1,31 @@
+.button {
+  border-radius: var(--border-radius-primary);
+  flex: 1;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  color: var(--color-primary-white);
+  font-weight: 700;
+  font-size: 2.2rem;
+  padding: 0.8rem 3rem;
+
+  &--dark {
+    @extend .button;
+    background-color: var(--color-quinary-blue);
+  }
+
+  &--light {
+    @extend .button;
+    background-color: var(--color-secondary-blue);
+  }
+
+  &--orange {
+    @extend .button;
+    background-color: var(--color-primary-orange);
+  }
+
+  &--gray {
+    @extend .button;
+    background-color: var(--color-primary-gray);
+  }
+}
