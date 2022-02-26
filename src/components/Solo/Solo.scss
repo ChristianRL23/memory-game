@@ -1,0 +1,9 @@
+.solo {
+  &__grid {
+    margin: 0 auto;
+    width: 35%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
