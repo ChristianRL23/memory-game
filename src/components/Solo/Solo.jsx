@@ -2,8 +2,10 @@ import Chip from '../Chip/Chip';
 import FooterItem from '../FooterItem/FooterItem';
 import './Solo.scss';
 import { useCallback, useMemo, useState } from 'react';
+import { useStopwatch } from 'react-timer-hook';
 
 const Solo = () => {
+  const { seconds, minutes } = useStopwatch({ autoStart: true });
   const [movesCount, setMovesCount] = useState(0);
   const numbers = useMemo(() => {
     return [
@@ -50,7 +52,12 @@ const Solo = () => {
         ))}
       </section>
       <footer className="solo__footer">
-        <FooterItem description="Time" value="0:00" />
+        <FooterItem
+          description="Time"
+          value={`${minutes}:${
+            seconds < 10 ? '0' + seconds.toString() : seconds.toString()
+          }`}
+        />
         <FooterItem description="Moves" value={movesCount} />
       </footer>
     </>
