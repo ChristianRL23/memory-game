@@ -33,6 +33,13 @@ $transition-time: 0.25s;
   &--gray {
     @extend .button;
     background-color: var(--color-primary-gray);
+    color: var(--color-quaternary-blue);
+    transition: background-color, $transition-time;
+    transition: color, $transition-time;
+    &:hover {
+      background-color: var(--color-primary-blue);
+      color: var(--color-primary-white);
+    }
   }
 
   &--selected {
