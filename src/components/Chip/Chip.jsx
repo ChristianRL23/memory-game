@@ -28,13 +28,17 @@ const Chip = ({
             setTimeout(() => {
               setChipFlipped((lastState) => !lastState);
               firstChipFlipped.flipChipFn(false);
-              setSecondChipFlipped(false);
+              setTimeout(() => {
+                setSecondChipFlipped(false);
+              }, 300);
               setFirstChipFlipped({ value: null, flipChipFn: null });
             }, 700);
           } else {
             setFirstChipFlipped({ value: null, flipChipFn: null });
             setTimeout(() => {
-              setSecondChipFlipped(false);
+              setTimeout(() => {
+                setSecondChipFlipped(false);
+              }, 300);
               firstChipFlipped.setChipPair(true);
               setChipPair(true);
             }, 700);
