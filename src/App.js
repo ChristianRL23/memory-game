@@ -1,4 +1,5 @@
 import './App.scss';
+import GameOver from './components/GameOver/GameOver';
 import Game from './layouts/Game/Game';
 import StartGame from './layouts/StartGame/StartGame';
 
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       {/* <StartGame /> */}
       <Game />
+      <GameOver />
     </div>
   );
 }

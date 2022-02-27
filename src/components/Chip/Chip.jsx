@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { soloGameActions } from '../../store/soloGame';
 import './Chip.scss';
 
 const Chip = ({
@@ -9,6 +11,7 @@ const Chip = ({
   secondChipFlipped,
   setSecondChipFlipped,
 }) => {
+  const dispatch = useDispatch();
   const [chipFlipped, setChipFlipped] = useState(false);
   const [chipPair, setChipPair] = useState(false);
   const selectChip = () => {
@@ -41,6 +44,7 @@ const Chip = ({
               }, 300);
               firstChipFlipped.setChipPair(true);
               setChipPair(true);
+              dispatch(soloGameActions.findPairOfNumber(backTextContent));
             }, 700);
           }
         }
