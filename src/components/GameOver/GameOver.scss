@@ -1,0 +1,17 @@
+.modal {
+  text-align: center;
+  &__message {
+    font-size: 4.5rem;
+    color: var(--color-quinary-blue);
+    margin-bottom: 1.5rem;
+  }
+  &__description {
+    margin-bottom: 3.5rem;
+    font-size: 1.65rem;
+    color: var(--color-tertiary-blue);
+  }
+  &__buttons {
+    display: flex;
+    gap: 1.5rem;
+  }
+}
