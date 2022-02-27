@@ -8,7 +8,6 @@
     &--no-flipped {
       height: 100%;
       position: relative;
-      text-align: left;
       transition: transform 0.8s;
       transform-style: preserve-3d;
       width: 100%;
@@ -46,9 +45,15 @@
       overflow: auto;
       padding: 20px;
       transform: rotateY(180deg);
+      transition: background-color 0.3s;
       font-size: 4rem;
       text-align: center;
       font-weight: 700;
+
+      &--pair {
+        @extend .chip__inner__back;
+        background-color: var(--color-primary-orange);
+      }
     }
   }
 }

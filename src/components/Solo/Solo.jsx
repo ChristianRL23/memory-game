@@ -6,6 +6,11 @@ import { useStopwatch } from 'react-timer-hook';
 
 const Solo = () => {
   const { seconds, minutes } = useStopwatch({ autoStart: true });
+  const [firstChipFlipped, setFirstChipFlipped] = useState({
+    value: null,
+    flipChipFn: null,
+  });
+  const [secondChipFlipped, setSecondChipFlipped] = useState(false);
   const [movesCount, setMovesCount] = useState(0);
   const numbers = useMemo(() => {
     return [
@@ -45,6 +50,10 @@ const Solo = () => {
       <section className="solo__grid">
         {randomNumbersArr.map((number) => (
           <Chip
+            secondChipFlipped={secondChipFlipped}
+            setSecondChipFlipped={setSecondChipFlipped}
+            firstChipFlipped={firstChipFlipped}
+            setFirstChipFlipped={setFirstChipFlipped}
             setMoves={setMovesCount}
             key={number.id}
             backTextContent={number.number}
