@@ -3,7 +3,6 @@
   height: 9rem;
   background-color: transparent;
   perspective: 1000px;
-  cursor: pointer;
 
   &__inner {
     &--no-flipped {
@@ -33,6 +32,7 @@
 
     &__front {
       background-color: var(--color-quaternary-blue);
+      cursor: pointer;
 
       &:hover {
         background-color: var(--color-primary-blue);

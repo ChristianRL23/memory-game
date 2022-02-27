@@ -4,8 +4,10 @@ import './Chip.scss';
 const Chip = ({ backTextContent, setMoves }) => {
   const [chipFlipped, setChipFlipped] = useState(false);
   const selectChip = () => {
-    setChipFlipped((lastState) => !lastState);
-    setMoves((lastState) => ++lastState);
+    if (!chipFlipped) {
+      setChipFlipped((lastState) => !lastState);
+      setMoves((lastState) => ++lastState);
+    }
   };
 
   return (
