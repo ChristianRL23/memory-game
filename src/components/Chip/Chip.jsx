@@ -12,32 +12,33 @@ const Chip = ({
   const [chipFlipped, setChipFlipped] = useState(false);
   const [chipPair, setChipPair] = useState(false);
   const selectChip = () => {
-    if (!chipFlipped) {
-      setChipFlipped((lastState) => !lastState);
-      setMoves((lastState) => ++lastState);
-      if (firstChipFlipped.value === null) {
-        setFirstChipFlipped({
-          value: backTextContent,
-          flipChipFn: setChipFlipped,
-          setChipPair,
-        });
-      } else {
-        if (firstChipFlipped.value !== backTextContent) {
-          setSecondChipFlipped(true);
-          setTimeout(() => {
-            setChipFlipped((lastState) => !lastState);
-            firstChipFlipped.flipChipFn(false);
-            setSecondChipFlipped(false);
-            setFirstChipFlipped({ value: null, flipChipFn: null });
-          }, 700);
+    if (!secondChipFlipped) {
+      if (!chipFlipped) {
+        setChipFlipped((lastState) => !lastState);
+        setMoves((lastState) => ++lastState);
+        if (firstChipFlipped.value === null) {
+          setFirstChipFlipped({
+            value: backTextContent,
+            flipChipFn: setChipFlipped,
+            setChipPair,
+          });
         } else {
           setSecondChipFlipped(true);
-          setFirstChipFlipped({ value: null, flipChipFn: null });
-          setTimeout(() => {
-            firstChipFlipped.setChipPair(true);
-            setChipPair(true);
-            setSecondChipFlipped(false);
-          }, 700);
+          if (firstChipFlipped.value !== backTextContent) {
+            setTimeout(() => {
+              setChipFlipped((lastState) => !lastState);
+              firstChipFlipped.flipChipFn(false);
+              setSecondChipFlipped(false);
+              setFirstChipFlipped({ value: null, flipChipFn: null });
+            }, 700);
+          } else {
+            setFirstChipFlipped({ value: null, flipChipFn: null });
+            setTimeout(() => {
+              setSecondChipFlipped(false);
+              firstChipFlipped.setChipPair(true);
+              setChipPair(true);
+            }, 700);
+          }
         }
       }
     }
