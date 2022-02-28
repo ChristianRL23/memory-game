@@ -4,8 +4,11 @@ import './Solo.scss';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { soloGameActions } from '../../store/soloGame';
 
 const Solo = ({ displayGameOverModal }) => {
+  const dispatch = useDispatch();
   const soloGameState = useSelector((state) => state.soloGame);
   const { numbersFinded } = soloGameState;
   const { seconds, minutes, pause } = useStopwatch({ autoStart: true });
@@ -52,6 +55,12 @@ const Solo = ({ displayGameOverModal }) => {
     if (numbersFinded.length === 8) {
       pause();
       setTimeout(() => {
+        dispatch(
+          soloGameActions.saveGameResults({
+            moves: movesCount,
+            time: { minutes, seconds },
+          })
+        );
         displayGameOverModal();
       }, 600);
     }

@@ -1,11 +1,11 @@
 .game-over-item {
   flex: 1;
-  background-color: var(--color-secondary-blue);
+  background-color: var(--color-primary-gray);
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.5rem 2.5rem;
 
   &__title {
     color: var(--color-tertiary-blue);
@@ -13,7 +13,7 @@
   }
 
   &__value {
-    color: var(--color-quinary-blue);
+    color: var(--color-quaternary-blue);
     font-size: 2.8rem;
   }
 }
