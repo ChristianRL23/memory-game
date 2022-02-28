@@ -5,7 +5,7 @@ import StartGameField from '../../components/StartGameField/StartGameField';
 import { gameConfigurationActions } from '../../store/gameConfiguration';
 import './StartGame.scss';
 
-const StartGame = () => {
+const StartGame = ({ setGameInitialized }) => {
   const dispatch = useDispatch();
   const gameConfigurationState = useSelector(
     (state) => state.gameConfiguration
@@ -19,6 +19,10 @@ const StartGame = () => {
   };
   const selectGrid = (e) => {
     dispatch(gameConfigurationActions.selectGrid(e.target.textContent));
+  };
+
+  const startGame = () => {
+    setGameInitialized(true);
   };
 
   return (
@@ -72,7 +76,7 @@ const StartGame = () => {
               onClick={selectGrid}
             />
           </StartGameField>
-          <Button textContent="Start Game" color="orange" />
+          <Button onClick={startGame} textContent="Start Game" color="orange" />
         </div>
       </div>
     </section>
