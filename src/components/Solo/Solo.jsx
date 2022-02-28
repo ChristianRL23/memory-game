@@ -6,10 +6,14 @@ import { useStopwatch } from 'react-timer-hook';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from '../../store/soloGame';
+import { numbers4, numbers6 } from './numbers';
 
 const Solo = ({ displayGameOverModal }) => {
   const dispatch = useDispatch();
   const soloGameState = useSelector((state) => state.soloGame);
+  const gameConfigurationState = useSelector(
+    (state) => state.gameConfiguration
+  );
   const { numbersFinded } = soloGameState;
   const { seconds, minutes, pause } = useStopwatch({ autoStart: true });
   const [firstChipFlipped, setFirstChipFlipped] = useState({
@@ -19,24 +23,11 @@ const Solo = ({ displayGameOverModal }) => {
   const [secondChipFlipped, setSecondChipFlipped] = useState(false);
   const [movesCount, setMovesCount] = useState(0);
   const numbers = useMemo(() => {
-    return [
-      { number: 1, id: 1 },
-      { number: 1, id: 2 },
-      { number: 2, id: 3 },
-      { number: 2, id: 4 },
-      { number: 3, id: 5 },
-      { number: 3, id: 6 },
-      { number: 4, id: 7 },
-      { number: 4, id: 8 },
-      { number: 5, id: 9 },
-      { number: 5, id: 10 },
-      { number: 6, id: 11 },
-      { number: 6, id: 12 },
-      { number: 7, id: 13 },
-      { number: 7, id: 14 },
-      { number: 8, id: 15 },
-      { number: 8, id: 16 },
-    ];
+    if (gameConfigurationState.grid === 4) {
+      return [...numbers4];
+    } else {
+      return [...numbers6];
+    }
   }, []);
 
   const shuffle = useCallback((a) => {
@@ -52,7 +43,9 @@ const Solo = ({ displayGameOverModal }) => {
   }, [numbers, shuffle]);
 
   useEffect(() => {
-    if (numbersFinded.length === 8) {
+    const numbersNeeded = gameConfigurationState.grid === 4 ? 8 : 18;
+    console.log(numbersNeeded);
+    if (numbersFinded.length === numbersNeeded) {
       pause();
       setTimeout(() => {
         dispatch(
@@ -64,13 +57,16 @@ const Solo = ({ displayGameOverModal }) => {
         displayGameOverModal();
       }, 600);
     }
-  }, [displayGameOverModal, numbersFinded, pause]);
+  }, [displayGameOverModal, numbersFinded]);
 
   return (
     <>
-      <section className="solo__grid">
+      <section
+        className={`solo__grid--${gameConfigurationState.grid === 4 ? 4 : 6}`}
+      >
         {randomNumbersArr.map((number) => (
           <Chip
+            grid={gameConfigurationState.grid === 4 ? 4 : 6}
             secondChipFlipped={secondChipFlipped}
             setSecondChipFlipped={setSecondChipFlipped}
             firstChipFlipped={firstChipFlipped}

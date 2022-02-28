@@ -10,6 +10,7 @@ const Chip = ({
   firstChipFlipped,
   secondChipFlipped,
   setSecondChipFlipped,
+  grid,
 }) => {
   const dispatch = useDispatch();
   const [chipFlipped, setChipFlipped] = useState(false);
@@ -54,18 +55,20 @@ const Chip = ({
 
   let chipClassName;
   if (!chipPair) {
-    chipClassName = 'chip__inner__back';
+    chipClassName = `chip--${grid === 4 ? '4' : '6'}__inner__back`;
   } else {
-    chipClassName = 'chip__inner__back--pair';
+    chipClassName = `chip--${grid === 4 ? '4' : '6'}__inner__back--pair`;
   }
 
   return (
-    <div className="chip">
+    <div className={`chip--${grid === 4 ? '4' : '6'}`}>
       <div
-        className={`chip__inner--${chipFlipped ? 'flipped' : 'no-flipped'}`}
+        className={`chip--${grid === 4 ? '4' : '6'}__inner--${
+          chipFlipped ? 'flipped' : 'no-flipped'
+        }`}
         onClick={selectChip}
       >
-        <div className="chip__inner__front"></div>
+        <div className={`chip--${grid === 4 ? '4' : '6'}__inner__front`}></div>
         <div className={chipClassName}>{backTextContent}</div>
       </div>
     </div>

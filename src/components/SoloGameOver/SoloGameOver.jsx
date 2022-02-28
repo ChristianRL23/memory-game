@@ -9,7 +9,11 @@ const SoloGameOver = () => {
     <div className="solo-game-over">
       <GameOverItem
         title="Time Elapsed"
-        value={`${state.time.minutes}:${state.time.seconds}`}
+        value={`${state.time.minutes}:${
+          state.time.seconds < 10
+            ? '0' + state.time.seconds.toString()
+            : state.time.seconds.toString()
+        }`}
       />
       <GameOverItem title="Moves Taken" value={`${state.moves} Moves`} />
     </div>
