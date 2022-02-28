@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
+import SoloGameOver from './components/SoloGameOver/SoloGameOver.jsx';
 import GameOver from './components/GameOver/GameOver';
 import Game from './layouts/Game/Game';
 import StartGame from './layouts/StartGame/StartGame';
@@ -24,6 +25,11 @@ function App() {
   const closeSetupNewGameModal = () => {
     setSetupNewGameDisplayed(false);
   };
+  const setupNewGame = () => {
+    setGameInitialized(false);
+    setGameOverDisplayed(false);
+    closeSetupNewGameModal();
+  };
 
   return (
     <div className="App">
@@ -36,6 +42,17 @@ function App() {
             openSetupNewGameModal={openSetupNewGameModal}
             displayGameOverModal={displayGameOverModal}
           />
+          {gameOverDisplayed && (
+            <GameOver
+              buttonLeftTextContent="Restart"
+              buttonRightTextContent="Setup New Game"
+              buttonRightClickFn={setupNewGame}
+              message="You did it!"
+              description="Game over! Here's how you got on..."
+            >
+              <SoloGameOver />
+            </GameOver>
+          )}
           {restartGameDisplayed && (
             <GameOver
               buttonLeftTextContent="Restart"
@@ -50,6 +67,7 @@ function App() {
               message="Are you sure you want to setup a new game?"
               description="Your progress will be lost"
               buttonLeftTextContent="Setup New Game"
+              buttonLeftClickFn={setupNewGame}
               buttonRightTextContent="Cancel"
               buttonRightClickFn={closeSetupNewGameModal}
             />
