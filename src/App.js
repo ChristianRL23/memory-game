@@ -4,8 +4,11 @@ import SoloGameOver from './components/SoloGameOver/SoloGameOver.jsx';
 import GameOver from './components/GameOver/GameOver';
 import Game from './layouts/Game/Game';
 import StartGame from './layouts/StartGame/StartGame';
+import { useDispatch } from 'react-redux';
+import { soloGameActions } from './store/soloGame';
 
 function App() {
+  const dispatch = useDispatch();
   const [gameOverDisplayed, setGameOverDisplayed] = useState(false);
   const [restartGameDisplayed, setRestartGameDisplayed] = useState(false);
   const [setupNewGameDisplayed, setSetupNewGameDisplayed] = useState(false);
@@ -27,6 +30,7 @@ function App() {
   };
   const setupNewGame = () => {
     setGameInitialized(false);
+    dispatch(soloGameActions.cleanResults());
     setGameOverDisplayed(false);
     closeSetupNewGameModal();
   };
