@@ -2,7 +2,15 @@ import './GameOver.scss';
 import Modal from '../Modal/Modal';
 import Button from './../Button/Button';
 
-const GameOver = ({ message, description, children }) => {
+const GameOver = ({
+  message,
+  description,
+  children,
+  buttonLeftTextContent,
+  buttonLeftClickFn,
+  buttonRightTextContent,
+  buttonRightClickFn,
+}) => {
   return (
     <Modal>
       <>
@@ -11,8 +19,16 @@ const GameOver = ({ message, description, children }) => {
       </>
       {children}
       <div className="modal__buttons">
-        <Button textContent="Restart" color="orange" />
-        <Button textContent="Setup New Game" color="gray" />
+        <Button
+          onClick={buttonLeftClickFn}
+          textContent={buttonLeftTextContent}
+          color="orange"
+        />
+        <Button
+          onClick={buttonRightClickFn}
+          textContent={buttonRightTextContent}
+          color="gray"
+        />
       </div>
     </Modal>
   );
