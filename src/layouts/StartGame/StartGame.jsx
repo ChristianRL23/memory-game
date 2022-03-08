@@ -1,11 +1,14 @@
+import { useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import Button from '../../components/Button/Button';
 import StartGameField from '../../components/StartGameField/StartGameField';
+import TimerContext from '../../context/timerContext';
 import { gameConfigurationActions } from '../../store/gameConfiguration';
 import './StartGame.scss';
 
 const StartGame = ({ setGameInitialized }) => {
+  const timerCtx = useContext(TimerContext);
   const dispatch = useDispatch();
   const gameConfigurationState = useSelector(
     (state) => state.gameConfiguration
@@ -24,6 +27,12 @@ const StartGame = ({ setGameInitialized }) => {
   const startGame = () => {
     setGameInitialized(true);
   };
+
+  useEffect(() => {
+    timerCtx.resetTimer();
+    timerCtx.pauseTimer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section className="start-game">

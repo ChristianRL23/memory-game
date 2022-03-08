@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './App.scss';
 import SoloGameOver from './components/SoloGameOver/SoloGameOver.jsx';
 import GameOver from './components/GameOver/GameOver';
@@ -6,10 +6,12 @@ import Game from './layouts/Game/Game';
 import StartGame from './layouts/StartGame/StartGame';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from './store/soloGame';
+import TimerContext from './context/timerContext';
 
 /* TODO: HACER QUE EL BOTON DE RESTART FUNCIONE, HACIENDO QUE SE REINICIE EL RELOJ Y CAMBIANDO LA MANERA EN LA QUE LOS PAIR CHIPS FUNCIONAN, NO DEJARSELO AL CHIP COMPONENT O BUSCAR LA MANERA DE QUITARLES EL PAIR CLASS */
 
 function App() {
+  const timerCtx = useContext(TimerContext);
   const dispatch = useDispatch();
   const [gameOverDisplayed, setGameOverDisplayed] = useState(false);
   const [restartGameDisplayed, setRestartGameDisplayed] = useState(false);
@@ -36,6 +38,11 @@ function App() {
     dispatch(soloGameActions.cleanResults());
     setGameOverDisplayed(false);
     closeSetupNewGameModal();
+  };
+
+  const restartGame = () => {
+    console.log('RESTART');
+    setRestartGameDisplayed(false);
   };
 
   return (
@@ -67,6 +74,7 @@ function App() {
               message="Are you sure you want to restart the game?"
               description="Your progress will be lost"
               buttonRightClickFn={closeRestartGameModal}
+              buttonLeftClickFn={restartGame}
             />
           )}
           {setupNewGameDisplayed && (

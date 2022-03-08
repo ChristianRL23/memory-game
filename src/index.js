@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
+import { TimerContextProvider } from './context/timerContext';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <TimerContextProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </TimerContextProvider>
   </Provider>,
   document.getElementById('root')
 );

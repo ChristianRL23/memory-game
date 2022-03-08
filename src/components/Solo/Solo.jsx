@@ -1,21 +1,23 @@
 import Chip from '../Chip/Chip';
 import FooterItem from '../FooterItem/FooterItem';
 import './Solo.scss';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useStopwatch } from 'react-timer-hook';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+/* import { useStopwatch } from 'react-timer-hook'; */
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from '../../store/soloGame';
 import { numbers4, numbers6 } from './numbers';
+import TimerContext from '../../context/timerContext';
 
 const Solo = ({ displayGameOverModal }) => {
+  const timerCtx = useContext(TimerContext);
   const dispatch = useDispatch();
   const soloGameState = useSelector((state) => state.soloGame);
   const gameConfigurationState = useSelector(
     (state) => state.gameConfiguration
   );
   const { numbersFinded } = soloGameState;
-  const { seconds, minutes, pause } = useStopwatch({ autoStart: true });
+  /* const { seconds, minutes, pause } = useStopwatch({ autoStart: true }); */
   const [firstChipFlipped, setFirstChipFlipped] = useState({
     value: null,
     flipChipFn: null,
@@ -44,14 +46,24 @@ const Solo = ({ displayGameOverModal }) => {
   }, [numbers, shuffle]);
 
   useEffect(() => {
+    timerCtx.resetTimer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     const numbersNeeded = gameConfigurationState.grid === 4 ? 8 : 18;
     console.log(numbersNeeded);
     if (numbersFinded.length === numbersNeeded) {
-      pause();
+      /* pause(); */
+      timerCtx.pauseTimer();
       setTimeout(() => {
         dispatch(
           soloGameActions.saveGameResults({
-            time: { minutes, seconds },
+            /* time: { minutes, seconds }, */
+            time: {
+              minutes: timerCtx.time.minutes,
+              seconds: timerCtx.time.seconds,
+            },
           })
         );
         displayGameOverModal();
@@ -80,8 +92,13 @@ const Solo = ({ displayGameOverModal }) => {
       <footer className="solo__footer">
         <FooterItem
           description="Time"
-          value={`${minutes}:${
+          /* value={`${minutes}:${
             seconds < 10 ? '0' + seconds.toString() : seconds.toString()
+          }`} */
+          value={`${timerCtx.time.minutes}:${
+            timerCtx.time.seconds < 10
+              ? '0' + timerCtx.time.seconds.toString()
+              : timerCtx.time.seconds.toString()
           }`}
         />
         <FooterItem description="Moves" value={soloGameState.moves} />
