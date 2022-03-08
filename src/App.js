@@ -7,12 +7,15 @@ import StartGame from './layouts/StartGame/StartGame';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from './store/soloGame';
 
+/* TODO: HACER QUE EL BOTON DE RESTART FUNCIONE, HACIENDO QUE SE REINICIE EL RELOJ Y CAMBIANDO LA MANERA EN LA QUE LOS PAIR CHIPS FUNCIONAN, NO DEJARSELO AL CHIP COMPONENT O BUSCAR LA MANERA DE QUITARLES EL PAIR CLASS */
+
 function App() {
   const dispatch = useDispatch();
   const [gameOverDisplayed, setGameOverDisplayed] = useState(false);
   const [restartGameDisplayed, setRestartGameDisplayed] = useState(false);
   const [setupNewGameDisplayed, setSetupNewGameDisplayed] = useState(false);
   const [gameInitialized, setGameInitialized] = useState(false);
+
   const displayGameOverModal = () => {
     setGameOverDisplayed(true);
   };

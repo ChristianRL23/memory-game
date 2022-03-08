@@ -21,13 +21,14 @@ const Solo = ({ displayGameOverModal }) => {
     flipChipFn: null,
   });
   const [secondChipFlipped, setSecondChipFlipped] = useState(false);
-  const [movesCount, setMovesCount] = useState(0);
+
   const numbers = useMemo(() => {
     if (gameConfigurationState.grid === 4) {
       return [...numbers4];
     } else {
       return [...numbers6];
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const shuffle = useCallback((a) => {
@@ -50,13 +51,13 @@ const Solo = ({ displayGameOverModal }) => {
       setTimeout(() => {
         dispatch(
           soloGameActions.saveGameResults({
-            moves: movesCount,
             time: { minutes, seconds },
           })
         );
         displayGameOverModal();
       }, 600);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [displayGameOverModal, numbersFinded]);
 
   return (
@@ -71,7 +72,6 @@ const Solo = ({ displayGameOverModal }) => {
             setSecondChipFlipped={setSecondChipFlipped}
             firstChipFlipped={firstChipFlipped}
             setFirstChipFlipped={setFirstChipFlipped}
-            setMoves={setMovesCount}
             key={number.id}
             backTextContent={number.number}
           />
@@ -84,7 +84,7 @@ const Solo = ({ displayGameOverModal }) => {
             seconds < 10 ? '0' + seconds.toString() : seconds.toString()
           }`}
         />
-        <FooterItem description="Moves" value={movesCount} />
+        <FooterItem description="Moves" value={soloGameState.moves} />
       </footer>
     </>
   );

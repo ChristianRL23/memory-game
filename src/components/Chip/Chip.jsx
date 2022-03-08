@@ -5,7 +5,6 @@ import './Chip.scss';
 
 const Chip = ({
   backTextContent,
-  setMoves,
   setFirstChipFlipped,
   firstChipFlipped,
   secondChipFlipped,
@@ -19,7 +18,7 @@ const Chip = ({
     if (!secondChipFlipped) {
       if (!chipFlipped) {
         setChipFlipped((lastState) => !lastState);
-        setMoves((lastState) => ++lastState);
+        dispatch(soloGameActions.addMove());
         if (firstChipFlipped.value === null) {
           setFirstChipFlipped({
             value: backTextContent,

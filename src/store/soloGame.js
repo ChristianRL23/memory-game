@@ -10,11 +10,13 @@ const soloGameSlice = createSlice({
   name: 'soloGame',
   initialState: soloGameInitialState,
   reducers: {
+    addMove(state) {
+      ++state.moves;
+    },
     findPairOfNumber(state, payload) {
       state.numbersFinded.push(payload.payload);
     },
     saveGameResults(state, payload) {
-      state.moves = payload.payload.moves;
       state.time.minutes = payload.payload.time.minutes;
       state.time.seconds = payload.payload.time.seconds;
     },
