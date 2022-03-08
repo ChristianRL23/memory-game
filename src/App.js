@@ -47,6 +47,8 @@ function App() {
   const restartGame = () => {
     console.log('RESTART');
     setRestartGameDisplayed(false);
+    timerCtx.resetTimer();
+    dispatch(soloGameActions.cleanResults());
   };
 
   return (
