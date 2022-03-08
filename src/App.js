@@ -23,15 +23,19 @@ function App() {
   };
   const openRestartGameModal = () => {
     setRestartGameDisplayed(true);
+    timerCtx.pauseTimer();
   };
   const closeRestartGameModal = () => {
     setRestartGameDisplayed(false);
+    timerCtx.startTimer();
   };
   const openSetupNewGameModal = () => {
     setSetupNewGameDisplayed(true);
+    timerCtx.pauseTimer();
   };
   const closeSetupNewGameModal = () => {
     setSetupNewGameDisplayed(false);
+    timerCtx.startTimer();
   };
   const setupNewGame = () => {
     setGameInitialized(false);
