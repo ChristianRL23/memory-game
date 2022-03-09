@@ -10,7 +10,7 @@ import TimerContext from '../../context/timerContext';
 
 const Solo = ({ displayGameOverModal, render }) => {
   console.log('NEW RENDER SOLO');
-
+  const [restoreChips, setRestoreChips] = useState(null);
   const [randomNumbersArr, setRandomNumebersArr] = useState([]);
   const timerCtx = useContext(TimerContext);
   const dispatch = useDispatch();
@@ -34,7 +34,6 @@ const Solo = ({ displayGameOverModal, render }) => {
   }, []);
 
   useEffect(() => {
-    console.log('AGAIN');
     timerCtx.resetTimer();
     let numbers;
     if (gameConfigurationState.grid === 4) {
@@ -42,20 +41,15 @@ const Solo = ({ displayGameOverModal, render }) => {
     } else {
       numbers = [...numbers6];
     }
-
-    setRandomNumebersArr(shuffle(numbers));
-
-    /* const newChips = numbersArr.map((number) => (
-      <Chip
-        grid={gameConfigurationState.grid === 4 ? 4 : 6}
-        secondChipFlipped={secondChipFlipped}
-        setSecondChipFlipped={setSecondChipFlipped}
-        firstChipFlipped={firstChipFlipped}
-        setFirstChipFlipped={setFirstChipFlipped}
-        key={number.id}
-        backTextContent={number.number}
-      />
-    )); */
+    if (restoreChips === null) {
+      setRandomNumebersArr(shuffle(numbers));
+      setRestoreChips(false);
+    } else {
+      setRestoreChips((lastState) => !lastState);
+      setTimeout(() => {
+        setRandomNumebersArr(shuffle(numbers));
+      }, 700);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [render]);
@@ -88,6 +82,7 @@ const Solo = ({ displayGameOverModal, render }) => {
       >
         {randomNumbersArr.map((number) => (
           <Chip
+            restoreChips={restoreChips}
             grid={gameConfigurationState.grid === 4 ? 4 : 6}
             secondChipFlipped={secondChipFlipped}
             setSecondChipFlipped={setSecondChipFlipped}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from '../../store/soloGame';
 import './Chip.scss';
@@ -10,6 +10,7 @@ const Chip = ({
   secondChipFlipped,
   setSecondChipFlipped,
   grid,
+  restoreChips,
 }) => {
   const dispatch = useDispatch();
   const [chipFlipped, setChipFlipped] = useState(false);
@@ -58,6 +59,11 @@ const Chip = ({
   } else {
     chipClassName = `chip--${grid === 4 ? '4' : '6'}__inner__back--pair`;
   }
+
+  useEffect(() => {
+    setChipFlipped(false);
+    setChipPair(false);
+  }, [restoreChips]);
 
   return (
     <div className={`chip--${grid === 4 ? '4' : '6'}`}>
