@@ -25,6 +25,11 @@ const gameConfigurationSlice = createSlice({
       }
       state.grid = grid;
     },
+    restoreConfiguration(state) {
+      state.theme = 'Numbers';
+      state.players = 1;
+      state.grid = 4;
+    },
   },
 });
 

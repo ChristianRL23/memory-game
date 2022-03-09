@@ -44,7 +44,6 @@ function App() {
   };
 
   const restartGame = () => {
-    console.log('RESTART');
     setRestartGameDisplayed(false);
     dispatch(soloGameActions.cleanResults());
     setRender((lastState) => !lastState);
