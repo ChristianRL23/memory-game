@@ -8,8 +8,6 @@ import { useDispatch } from 'react-redux';
 import { soloGameActions } from './store/soloGame';
 import TimerContext from './context/timerContext';
 
-/* TODO: HACER QUE EL BOTON DE RESTART FUNCIONE, HACIENDO QUE SE REINICIE EL RELOJ Y CAMBIANDO LA MANERA EN LA QUE LOS PAIR CHIPS FUNCIONAN, NO DEJARSELO AL CHIP COMPONENT O BUSCAR LA MANERA DE QUITARLES EL PAIR CLASS */
-
 function App() {
   const [render, setRender] = useState(false);
   const timerCtx = useContext(TimerContext);
@@ -50,6 +48,7 @@ function App() {
     setRestartGameDisplayed(false);
     dispatch(soloGameActions.cleanResults());
     setRender((lastState) => !lastState);
+    setGameOverDisplayed(false);
   };
 
   return (
@@ -66,6 +65,7 @@ function App() {
           />
           {gameOverDisplayed && (
             <GameOver
+              buttonLeftClickFn={restartGame}
               buttonLeftTextContent="Restart"
               buttonRightTextContent="Setup New Game"
               buttonRightClickFn={setupNewGame}
