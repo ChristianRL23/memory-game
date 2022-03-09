@@ -6,6 +6,7 @@ const Game = ({
   displayGameOverModal,
   openRestartGameModal,
   openSetupNewGameModal,
+  render,
 }) => {
   return (
     <main className="game">
@@ -13,7 +14,7 @@ const Game = ({
         openSetupNewGameModal={openSetupNewGameModal}
         openRestartGameModal={openRestartGameModal}
       />
-      <Solo displayGameOverModal={displayGameOverModal} />
+      <Solo render={render} displayGameOverModal={displayGameOverModal} />
     </main>
   );
 };

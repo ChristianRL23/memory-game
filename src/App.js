@@ -11,6 +11,7 @@ import TimerContext from './context/timerContext';
 /* TODO: HACER QUE EL BOTON DE RESTART FUNCIONE, HACIENDO QUE SE REINICIE EL RELOJ Y CAMBIANDO LA MANERA EN LA QUE LOS PAIR CHIPS FUNCIONAN, NO DEJARSELO AL CHIP COMPONENT O BUSCAR LA MANERA DE QUITARLES EL PAIR CLASS */
 
 function App() {
+  const [render, setRender] = useState(false);
   const timerCtx = useContext(TimerContext);
   const dispatch = useDispatch();
   const [gameOverDisplayed, setGameOverDisplayed] = useState(false);
@@ -47,8 +48,8 @@ function App() {
   const restartGame = () => {
     console.log('RESTART');
     setRestartGameDisplayed(false);
-    timerCtx.resetTimer();
     dispatch(soloGameActions.cleanResults());
+    setRender((lastState) => !lastState);
   };
 
   return (
@@ -58,6 +59,7 @@ function App() {
       ) : (
         <>
           <Game
+            render={render}
             openRestartGameModal={openRestartGameModal}
             openSetupNewGameModal={openSetupNewGameModal}
             displayGameOverModal={displayGameOverModal}

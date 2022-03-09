@@ -8,7 +8,9 @@ import { soloGameActions } from '../../store/soloGame';
 import { numbers4, numbers6 } from './numbers';
 import TimerContext from '../../context/timerContext';
 
-const Solo = ({ displayGameOverModal }) => {
+const Solo = ({ displayGameOverModal, render }) => {
+  console.log('NEW RENDER SOLO');
+
   const [randomNumbersArr, setRandomNumebersArr] = useState([]);
   const timerCtx = useContext(TimerContext);
   const dispatch = useDispatch();
@@ -40,13 +42,23 @@ const Solo = ({ displayGameOverModal }) => {
     } else {
       numbers = [...numbers6];
     }
+
     setRandomNumebersArr(shuffle(numbers));
 
-    /* const randomNumbersArr = () => {
-      return shuffle(numbers);
-    }; */
+    /* const newChips = numbersArr.map((number) => (
+      <Chip
+        grid={gameConfigurationState.grid === 4 ? 4 : 6}
+        secondChipFlipped={secondChipFlipped}
+        setSecondChipFlipped={setSecondChipFlipped}
+        firstChipFlipped={firstChipFlipped}
+        setFirstChipFlipped={setFirstChipFlipped}
+        key={number.id}
+        backTextContent={number.number}
+      />
+    )); */
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [render]);
 
   useEffect(() => {
     const numbersNeeded = gameConfigurationState.grid === 4 ? 8 : 18;
