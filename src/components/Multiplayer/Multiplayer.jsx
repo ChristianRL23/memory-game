@@ -14,6 +14,7 @@ const Multiplayer = () => {
       <footer className="multiplayer__footer">
         {players.map((player) => (
           <MultiplayerFooterItem
+            key={player.player}
             description={`Player ${player.player}`}
             value={player.score}
             currentTurn={player.currentTurn}

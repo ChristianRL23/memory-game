@@ -16,9 +16,13 @@ const MultiplayerFooterItem = ({ description, value, currentTurn }) => {
         </h6>
         <h5 className="multiplayer-footer-item__item__value">{value}</h5>
       </div>
-      {currentTurn && (
-        <h6 className="multiplayer-footer-item__current-label">CURRENT TURN</h6>
-      )}
+      <h6
+        className={`multiplayer-footer-item__current-label--${
+          currentTurn ? 'visible' : 'hidden'
+        }`}
+      >
+        CURRENT TURN
+      </h6>
     </div>
   );
 };
