@@ -12,6 +12,7 @@ const multiplayerGameSlice = createSlice({
   initialState: multiplayerGameInitialState,
   reducers: {
     nextPlayer(state) {
+      //TODO: CHANGE THE PLAYERS TO THE OPTIONS GAME
       const currentPlayerIndex = state.findIndex(
         (player) => player.currentTurn
       );
@@ -24,6 +25,13 @@ const multiplayerGameSlice = createSlice({
         state[currentPlayerIndex].currentTurn = false;
         state[0].currentTurn = true;
       }
+    },
+
+    givePoint(state) {
+      const currentPlayerIndex = state.findIndex(
+        (player) => player.currentTurn
+      );
+      state[currentPlayerIndex].score++;
     },
   },
 });

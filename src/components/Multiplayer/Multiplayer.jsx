@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { multiplayerGameActions } from '../../store/multiplayerGame';
+import { useSelector } from 'react-redux';
 import { shuffle } from '../../utils/shuffle';
 import Chip from '../Chip/Chip';
 import MultiplayerFooterItem from '../MultiplayerFooterItem/MultiplayerFooterItem';
@@ -20,11 +19,6 @@ const Multiplayer = () => {
   );
   const multiplayerGameState = useSelector((state) => state.multiplayerGame);
   const players = multiplayerGameState.slice(0, gameConfigurationState.players);
-  const dispatch = useDispatch();
-
-  const nextPlayer = () => {
-    dispatch(multiplayerGameActions.nextPlayer());
-  };
 
   useEffect(() => {
     let numbers;
@@ -54,6 +48,7 @@ const Multiplayer = () => {
       >
         {randomNumbersArr.map((number) => (
           <Chip
+            multiplayer={true}
             restoreChips={restoreChips}
             grid={gameConfigurationState.grid === 4 ? 4 : 6}
             secondChipFlipped={secondChipFlipped}
@@ -63,7 +58,6 @@ const Multiplayer = () => {
             key={number.id}
             internNumber={number.number}
             icons={gameConfigurationState.theme === 'Icons' ? true : false}
-            nextPlayer={nextPlayer}
           />
         ))}
       </section>

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { multiplayerGameActions } from '../../store/multiplayerGame';
 import { soloGameActions } from '../../store/soloGame';
 import { assignIcon } from '../../utils/assignIcon';
 import './Chip.scss';
@@ -14,7 +15,7 @@ const Chip = ({
   grid,
   restoreChips,
   icons,
-  nextPlayer,
+  multiplayer,
 }) => {
   const dispatch = useDispatch();
   const [chipFlipped, setChipFlipped] = useState(false);
@@ -40,6 +41,9 @@ const Chip = ({
                 setSecondChipFlipped(false);
               }, 300);
               setFirstChipFlipped({ value: null, flipChipFn: null });
+              if (multiplayer) {
+                dispatch(multiplayerGameActions.nextPlayer());
+              }
             }, 700);
           } else {
             setFirstChipFlipped({ value: null, flipChipFn: null });
@@ -50,8 +54,9 @@ const Chip = ({
               firstChipFlipped.setChipPair(true);
               setChipPair(true);
               dispatch(soloGameActions.findPairOfNumber(internNumber));
-              if (nextPlayer) {
-                nextPlayer();
+              if (multiplayer) {
+                dispatch(multiplayerGameActions.givePoint());
+                dispatch(multiplayerGameActions.nextPlayer());
               }
             }, 700);
           }
