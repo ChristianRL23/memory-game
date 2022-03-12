@@ -47,7 +47,7 @@ const Multiplayer = ({ render, displayGameOverModal }) => {
     const numbersNeeded = gameConfigurationState.grid === 4 ? 8 : 18;
     if (numbersFinded.length === numbersNeeded) {
       setTimeout(() => {
-        displayGameOverModal();
+        displayGameOverModal('MULTIPLAYER');
       }, 600);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

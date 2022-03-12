@@ -8,8 +8,11 @@ import { useDispatch } from 'react-redux';
 import { soloGameActions } from './store/soloGame';
 import TimerContext from './context/timerContext';
 import { multiplayerGameActions } from './store/multiplayerGame';
+import MultiplayerGameOver from './components/MultiplayerGameOver/MultiplayerGameOver';
 
 function App() {
+  const [multiplayerGameOverDisplayed, setMultiplayerGameOverDisplayed] =
+    useState(false);
   const [render, setRender] = useState(false);
   const timerCtx = useContext(TimerContext);
   const dispatch = useDispatch();
@@ -18,8 +21,12 @@ function App() {
   const [setupNewGameDisplayed, setSetupNewGameDisplayed] = useState(false);
   const [gameInitialized, setGameInitialized] = useState(false);
 
-  const displayGameOverModal = () => {
-    setGameOverDisplayed(true);
+  const displayGameOverModal = (mode) => {
+    if (mode === 'SOLO') {
+      setGameOverDisplayed(true);
+    } else {
+      setMultiplayerGameOverDisplayed(true);
+    }
   };
   const openRestartGameModal = () => {
     setRestartGameDisplayed(true);
@@ -75,6 +82,19 @@ function App() {
               description="Game over! Here's how you got on..."
             >
               <SoloGameOver />
+            </GameOver>
+          )}
+
+          {multiplayerGameOverDisplayed && (
+            <GameOver
+              buttonLeftClickFn={restartGame}
+              buttonLeftTextContent="Restart"
+              buttonRightTextContent="Setup New Game"
+              buttonRightClickFn={setupNewGame}
+              message="You did it!"
+              description="Game over! Here are the results..."
+            >
+              <MultiplayerGameOver />
             </GameOver>
           )}
           {restartGameDisplayed && (

@@ -16,4 +16,14 @@
     color: var(--color-quaternary-blue);
     font-size: 2.8rem;
   }
+
+  &--winner {
+    @extend .game-over-item;
+    background-color: var(--color-quinary-blue);
+
+    h6,
+    h3 {
+      color: var(--color-primary-white);
+    }
+  }
 }

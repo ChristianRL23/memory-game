@@ -59,7 +59,7 @@ const Solo = ({ displayGameOverModal, render }) => {
             },
           })
         );
-        displayGameOverModal();
+        displayGameOverModal('SOLO');
       }, 600);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
