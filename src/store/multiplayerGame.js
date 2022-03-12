@@ -10,7 +10,22 @@ const multiplayerGameInitialState = [
 const multiplayerGameSlice = createSlice({
   name: 'multiplayerGame',
   initialState: multiplayerGameInitialState,
-  /* reducers: {}, */
+  reducers: {
+    nextPlayer(state) {
+      const currentPlayerIndex = state.findIndex(
+        (player) => player.currentTurn
+      );
+      const isAnotherPlayer =
+        state[currentPlayerIndex + 1] === undefined ? false : true;
+      if (isAnotherPlayer) {
+        state[currentPlayerIndex].currentTurn = false;
+        state[currentPlayerIndex + 1].currentTurn = true;
+      } else {
+        state[currentPlayerIndex].currentTurn = false;
+        state[0].currentTurn = true;
+      }
+    },
+  },
 });
 
 export const multiplayerGameActions = multiplayerGameSlice.actions;
