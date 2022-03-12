@@ -6,7 +6,7 @@ import MultiplayerFooterItem from '../MultiplayerFooterItem/MultiplayerFooterIte
 import { numbers4, numbers6 } from '../Solo/numbers';
 import './Multiplayer.scss';
 
-const Multiplayer = () => {
+const Multiplayer = ({ render }) => {
   const [randomNumbersArr, setRandomNumebersArr] = useState([]);
   const [restoreChips, setRestoreChips] = useState(null);
   const [secondChipFlipped, setSecondChipFlipped] = useState(false);
@@ -37,7 +37,7 @@ const Multiplayer = () => {
       }, 700);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [render]);
 
   return (
     <>

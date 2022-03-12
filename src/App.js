@@ -48,6 +48,7 @@ function App() {
   const restartGame = () => {
     setRestartGameDisplayed(false);
     dispatch(soloGameActions.cleanResults());
+    dispatch(multiplayerGameActions.cleanResults());
     setRender((lastState) => !lastState);
     setGameOverDisplayed(false);
   };
