@@ -6,14 +6,17 @@ const Multiplayer = () => {
   const gameConfigurationState = useSelector(
     (state) => state.gameConfiguration
   );
+  const multiplayerGameState = useSelector((state) => state.multiplayerGame);
+  const players = multiplayerGameState.slice(0, gameConfigurationState.players);
 
   return (
     <>
       <footer className="multiplayer__footer">
-        {[...Array(gameConfigurationState.players).keys()].map((number) => (
+        {players.map((player) => (
           <MultiplayerFooterItem
-            description={`Player ${number + 1}`}
-            value="0"
+            description={`Player ${player.player}`}
+            value={player.score}
+            currentTurn={player.currentTurn}
           />
         ))}
       </footer>
