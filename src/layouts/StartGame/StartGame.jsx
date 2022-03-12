@@ -31,7 +31,6 @@ const StartGame = ({ setGameInitialized }) => {
   useEffect(() => {
     timerCtx.resetTimer();
     timerCtx.pauseTimer();
-    return () => dispatch(gameConfigurationActions.restoreConfiguration());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

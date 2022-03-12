@@ -1,16 +1,19 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from '../../store/soloGame';
+import { assignIcon } from '../../utils/assignIcon';
 import './Chip.scss';
 
 const Chip = ({
-  backTextContent,
+  internNumber,
   setFirstChipFlipped,
   firstChipFlipped,
   secondChipFlipped,
   setSecondChipFlipped,
   grid,
   restoreChips,
+  icons,
 }) => {
   const dispatch = useDispatch();
   const [chipFlipped, setChipFlipped] = useState(false);
@@ -22,13 +25,13 @@ const Chip = ({
         dispatch(soloGameActions.addMove());
         if (firstChipFlipped.value === null) {
           setFirstChipFlipped({
-            value: backTextContent,
+            value: internNumber,
             flipChipFn: setChipFlipped,
             setChipPair,
           });
         } else {
           setSecondChipFlipped(true);
-          if (firstChipFlipped.value !== backTextContent) {
+          if (firstChipFlipped.value !== internNumber) {
             setTimeout(() => {
               setChipFlipped((lastState) => !lastState);
               firstChipFlipped.flipChipFn(false);
@@ -45,7 +48,7 @@ const Chip = ({
               }, 300);
               firstChipFlipped.setChipPair(true);
               setChipPair(true);
-              dispatch(soloGameActions.findPairOfNumber(backTextContent));
+              dispatch(soloGameActions.findPairOfNumber(internNumber));
             }, 700);
           }
         }
@@ -74,7 +77,13 @@ const Chip = ({
         onClick={selectChip}
       >
         <div className={`chip--${grid === 4 ? '4' : '6'}__inner__front`}></div>
-        <div className={chipClassName}>{backTextContent}</div>
+        {icons ? (
+          <div className={chipClassName}>
+            <FontAwesomeIcon icon={assignIcon(internNumber)} />
+          </div>
+        ) : (
+          <div className={chipClassName}>{internNumber}</div>
+        )}
       </div>
     </div>
   );

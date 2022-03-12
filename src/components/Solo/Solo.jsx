@@ -9,7 +9,6 @@ import { numbers4, numbers6 } from './numbers';
 import TimerContext from '../../context/timerContext';
 
 const Solo = ({ displayGameOverModal, render }) => {
-  console.log('NEW RENDER SOLO');
   const [restoreChips, setRestoreChips] = useState(null);
   const [randomNumbersArr, setRandomNumebersArr] = useState([]);
   const timerCtx = useContext(TimerContext);
@@ -89,7 +88,8 @@ const Solo = ({ displayGameOverModal, render }) => {
             firstChipFlipped={firstChipFlipped}
             setFirstChipFlipped={setFirstChipFlipped}
             key={number.id}
-            backTextContent={number.number}
+            internNumber={number.number}
+            icons={gameConfigurationState.theme === 'Icons' ? true : false}
           />
         ))}
       </section>
