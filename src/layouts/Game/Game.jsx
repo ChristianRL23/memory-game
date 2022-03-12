@@ -24,7 +24,10 @@ const Game = ({
       {gameConfigurationState.players === 1 ? (
         <Solo render={render} displayGameOverModal={displayGameOverModal} />
       ) : (
-        <Multiplayer render={render} />
+        <Multiplayer
+          render={render}
+          displayGameOverModal={displayGameOverModal}
+        />
       )}
     </main>
   );

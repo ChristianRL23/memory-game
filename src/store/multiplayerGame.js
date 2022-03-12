@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const multiplayerGameInitialState = [
-  { player: 1, score: 0, currentTurn: true },
-  { player: 2, score: 0, currentTurn: false },
-  { player: 3, score: 0, currentTurn: false },
-  { player: 4, score: 0, currentTurn: false },
-];
+const multiplayerGameInitialState = {
+  numbersFinded: [],
+  players: [
+    { player: 1, score: 0, currentTurn: true },
+    { player: 2, score: 0, currentTurn: false },
+    { player: 3, score: 0, currentTurn: false },
+    { player: 4, score: 0, currentTurn: false },
+  ],
+};
 
 const multiplayerGameSlice = createSlice({
   name: 'multiplayerGame',
@@ -13,34 +16,36 @@ const multiplayerGameSlice = createSlice({
   reducers: {
     nextPlayer(state, payload) {
       const numberOfPlayers = payload.payload;
-      const currentPlayerIndex = state.findIndex(
+      const currentPlayerIndex = state.players.findIndex(
         (player) => player.currentTurn
       );
       const isNotAnotherPlayer =
-        state[currentPlayerIndex].player === numberOfPlayers;
+        state.players[currentPlayerIndex].player === numberOfPlayers;
 
       if (isNotAnotherPlayer) {
-        state[currentPlayerIndex].currentTurn = false;
-        state[0].currentTurn = true;
+        state.players[currentPlayerIndex].currentTurn = false;
+        state.players[0].currentTurn = true;
       } else {
-        state[currentPlayerIndex].currentTurn = false;
-        state[currentPlayerIndex + 1].currentTurn = true;
+        state.players[currentPlayerIndex].currentTurn = false;
+        state.players[currentPlayerIndex + 1].currentTurn = true;
       }
     },
-
     givePoint(state) {
-      const currentPlayerIndex = state.findIndex(
+      const currentPlayerIndex = state.players.findIndex(
         (player) => player.currentTurn
       );
-      state[currentPlayerIndex].score++;
+      state.players[currentPlayerIndex].score++;
     },
-
     cleanResults(state) {
-      state.forEach((player) => {
+      state.players.forEach((player) => {
         player.score = 0;
         player.currentTurn = false;
       });
-      state[0].currentTurn = true;
+      state.players[0].currentTurn = true;
+      state.numbersFinded = [];
+    },
+    findPairOfNumber(state, payload) {
+      state.numbersFinded.push(payload.payload);
     },
   },
 });

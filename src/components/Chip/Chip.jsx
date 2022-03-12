@@ -27,7 +27,9 @@ const Chip = ({
     if (!secondChipFlipped) {
       if (!chipFlipped) {
         setChipFlipped((lastState) => !lastState);
-        dispatch(soloGameActions.addMove());
+        if (!multiplayer) {
+          dispatch(soloGameActions.addMove());
+        }
         if (firstChipFlipped.value === null) {
           setFirstChipFlipped({
             value: internNumber,
@@ -60,7 +62,11 @@ const Chip = ({
               }, 300);
               firstChipFlipped.setChipPair(true);
               setChipPair(true);
-              dispatch(soloGameActions.findPairOfNumber(internNumber));
+              if (multiplayer) {
+                dispatch(multiplayerGameActions.findPairOfNumber(internNumber));
+              } else {
+                dispatch(soloGameActions.findPairOfNumber(internNumber));
+              }
               if (multiplayer) {
                 dispatch(multiplayerGameActions.givePoint());
                 dispatch(

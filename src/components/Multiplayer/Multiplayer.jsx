@@ -6,7 +6,7 @@ import MultiplayerFooterItem from '../MultiplayerFooterItem/MultiplayerFooterIte
 import { numbers4, numbers6 } from '../Solo/numbers';
 import './Multiplayer.scss';
 
-const Multiplayer = ({ render }) => {
+const Multiplayer = ({ render, displayGameOverModal }) => {
   const [randomNumbersArr, setRandomNumebersArr] = useState([]);
   const [restoreChips, setRestoreChips] = useState(null);
   const [secondChipFlipped, setSecondChipFlipped] = useState(false);
@@ -18,7 +18,11 @@ const Multiplayer = ({ render }) => {
     (state) => state.gameConfiguration
   );
   const multiplayerGameState = useSelector((state) => state.multiplayerGame);
-  const players = multiplayerGameState.slice(0, gameConfigurationState.players);
+  const players = multiplayerGameState.players.slice(
+    0,
+    gameConfigurationState.players
+  );
+  const { numbersFinded } = multiplayerGameState;
 
   useEffect(() => {
     let numbers;
@@ -38,6 +42,16 @@ const Multiplayer = ({ render }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [render]);
+
+  useEffect(() => {
+    const numbersNeeded = gameConfigurationState.grid === 4 ? 8 : 18;
+    if (numbersFinded.length === numbersNeeded) {
+      setTimeout(() => {
+        displayGameOverModal();
+      }, 600);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [displayGameOverModal, numbersFinded]);
 
   return (
     <>
