@@ -1,4 +1,23 @@
 .multiplayer {
+  &__grid {
+    margin: 0 auto;
+    display: grid;
+
+    &--4 {
+      @extend .multiplayer__grid;
+      width: 35%;
+      gap: 1.5rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &--6 {
+      @extend .multiplayer__grid;
+      gap: 1rem;
+      width: 39%;
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
   &__footer {
     margin: 0 auto;
     width: 100%;

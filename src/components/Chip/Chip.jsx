@@ -14,6 +14,7 @@ const Chip = ({
   grid,
   restoreChips,
   icons,
+  nextPlayer,
 }) => {
   const dispatch = useDispatch();
   const [chipFlipped, setChipFlipped] = useState(false);
@@ -49,6 +50,9 @@ const Chip = ({
               firstChipFlipped.setChipPair(true);
               setChipPair(true);
               dispatch(soloGameActions.findPairOfNumber(internNumber));
+              if (nextPlayer) {
+                nextPlayer();
+              }
             }, 700);
           }
         }

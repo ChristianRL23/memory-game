@@ -1,7 +1,8 @@
 import Chip from '../Chip/Chip';
 import FooterItem from '../FooterItem/FooterItem';
 import './Solo.scss';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { shuffle } from './../../utils/shuffle';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from '../../store/soloGame';
@@ -23,14 +24,6 @@ const Solo = ({ displayGameOverModal, render }) => {
     flipChipFn: null,
   });
   const [secondChipFlipped, setSecondChipFlipped] = useState(false);
-
-  const shuffle = useCallback((a) => {
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i].number, a[j].number] = [a[j].number, a[i].number];
-    }
-    return a;
-  }, []);
 
   useEffect(() => {
     timerCtx.resetTimer();
@@ -56,12 +49,10 @@ const Solo = ({ displayGameOverModal, render }) => {
   useEffect(() => {
     const numbersNeeded = gameConfigurationState.grid === 4 ? 8 : 18;
     if (numbersFinded.length === numbersNeeded) {
-      /* pause(); */
       timerCtx.pauseTimer();
       setTimeout(() => {
         dispatch(
           soloGameActions.saveGameResults({
-            /* time: { minutes, seconds }, */
             time: {
               minutes: timerCtx.time.minutes,
               seconds: timerCtx.time.seconds,
