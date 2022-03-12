@@ -69,11 +69,6 @@ const Chip = ({
               }
               if (multiplayer) {
                 dispatch(multiplayerGameActions.givePoint());
-                dispatch(
-                  multiplayerGameActions.nextPlayer(
-                    gameConfigurationState.players
-                  )
-                );
               }
             }, 700);
           }
