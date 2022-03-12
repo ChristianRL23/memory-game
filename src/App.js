@@ -7,6 +7,7 @@ import StartGame from './layouts/StartGame/StartGame';
 import { useDispatch } from 'react-redux';
 import { soloGameActions } from './store/soloGame';
 import TimerContext from './context/timerContext';
+import { multiplayerGameActions } from './store/multiplayerGame';
 
 function App() {
   const [render, setRender] = useState(false);
@@ -39,6 +40,7 @@ function App() {
   const setupNewGame = () => {
     setGameInitialized(false);
     dispatch(soloGameActions.cleanResults());
+    dispatch(multiplayerGameActions.cleanResults());
     setGameOverDisplayed(false);
     closeSetupNewGameModal();
   };

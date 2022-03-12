@@ -34,6 +34,14 @@ const multiplayerGameSlice = createSlice({
       );
       state[currentPlayerIndex].score++;
     },
+
+    cleanResults(state) {
+      state.forEach((player) => {
+        player.score = 0;
+        player.currentTurn = false;
+      });
+      state[0].currentTurn = true;
+    },
   },
 });
 
