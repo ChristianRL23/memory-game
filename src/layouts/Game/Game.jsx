@@ -13,7 +13,6 @@ const Game = ({
   const gameConfigurationState = useSelector(
     (state) => state.gameConfiguration
   );
-  console.log(gameConfigurationState.players);
 
   return (
     <main className="game">
