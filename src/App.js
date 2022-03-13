@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { useContext, useState } from 'react';
 import './App.scss';
 import SoloGameOver from './components/SoloGameOver/SoloGameOver.jsx';
@@ -20,6 +21,16 @@ function App() {
   const [restartGameDisplayed, setRestartGameDisplayed] = useState(false);
   const [setupNewGameDisplayed, setSetupNewGameDisplayed] = useState(false);
   const [gameInitialized, setGameInitialized] = useState(false);
+
+  const gameConfigurationState = useSelector(
+    (state) => state.gameConfiguration
+  );
+  const multiplayerGameState = useSelector((state) => state.multiplayerGame);
+  let players = multiplayerGameState.players.slice(
+    0,
+    gameConfigurationState.players
+  );
+  players = players.sort((a, b) => b.score - a.score);
 
   const displayGameOverModal = (mode) => {
     if (mode === 'SOLO') {
@@ -58,7 +69,15 @@ function App() {
     dispatch(multiplayerGameActions.cleanResults());
     setRender((lastState) => !lastState);
     setGameOverDisplayed(false);
+    setMultiplayerGameOverDisplayed(false);
   };
+
+  let multiplayerGameOverMessage;
+  if (players[0].score === players[1].score) {
+    multiplayerGameOverMessage = `It's a tie!`;
+  } else {
+    multiplayerGameOverMessage = `Player ${players[0].player} Wins!`;
+  }
 
   return (
     <div className="App">
@@ -91,10 +110,10 @@ function App() {
               buttonLeftTextContent="Restart"
               buttonRightTextContent="Setup New Game"
               buttonRightClickFn={setupNewGame}
-              message="You did it!"
+              message={multiplayerGameOverMessage}
               description="Game over! Here are the results..."
             >
-              <MultiplayerGameOver />
+              <MultiplayerGameOver players={players} />
             </GameOver>
           )}
           {restartGameDisplayed && (

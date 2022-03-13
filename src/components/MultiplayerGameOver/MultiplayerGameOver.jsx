@@ -1,19 +1,7 @@
-import { useSelector } from 'react-redux';
 import GameOverItem from '../GameOverItem/GameOverItem';
 import './MultiplayerGameOver.scss';
 
-const MultiplayerGameOver = () => {
-  const gameConfigurationState = useSelector(
-    (state) => state.gameConfiguration
-  );
-  const multiplayerGameState = useSelector((state) => state.multiplayerGame);
-  let players = multiplayerGameState.players.slice(
-    0,
-    gameConfigurationState.players
-  );
-  players = players.sort((a, b) => b.score - a.score);
-  console.log(players);
-
+const MultiplayerGameOver = ({ players }) => {
   return (
     <div className="multiplayer-game-over">
       {players.map((player, index) => {
@@ -29,8 +17,11 @@ const MultiplayerGameOver = () => {
         }
         return (
           <GameOverItem
+            winner={player.score === players[0].score}
             key={player.player}
-            title={`Player ${player.player}`}
+            title={`Player ${player.player} ${
+              player.score === players[0].score && '(Winner!)'
+            }`}
             value={`${player.score} Pairs`}
           />
         );
