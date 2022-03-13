@@ -60,6 +60,7 @@ function App() {
     dispatch(soloGameActions.cleanResults());
     dispatch(multiplayerGameActions.cleanResults());
     setGameOverDisplayed(false);
+    setMultiplayerGameOverDisplayed(false);
     closeSetupNewGameModal();
   };
 
