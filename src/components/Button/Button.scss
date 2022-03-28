@@ -11,6 +11,10 @@ $transition-time: 0.25s;
   font-size: 2rem;
   padding: 0.8rem 3rem;
 
+  @media screen and (max-width: 410px) {
+    padding: 0.7rem 2rem;
+  }
+
   &--dark {
     @extend .button;
     background-color: var(--color-quinary-blue);

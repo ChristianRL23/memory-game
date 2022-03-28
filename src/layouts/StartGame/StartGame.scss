@@ -3,14 +3,15 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 3rem;
 
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
+    width: 55rem;
 
     h1 {
       color: var(--color-primary-white);
@@ -26,6 +27,14 @@
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
+
+      @media screen and (max-width: 530px) {
+        padding: 3rem;
+      }
+
+      @media screen and (max-width: 330px) {
+        padding: 3rem 2rem;
+      }
     }
   }
 }
