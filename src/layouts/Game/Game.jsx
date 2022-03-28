@@ -8,6 +8,7 @@ const Game = ({
   displayGameOverModal,
   openRestartGameModal,
   openSetupNewGameModal,
+  openMenuModal,
   render,
 }) => {
   const gameConfigurationState = useSelector(
@@ -17,6 +18,7 @@ const Game = ({
   return (
     <main className="game">
       <HeaderGame
+        openMenuModal={openMenuModal}
         openSetupNewGameModal={openSetupNewGameModal}
         openRestartGameModal={openRestartGameModal}
       />

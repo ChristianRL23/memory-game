@@ -7,6 +7,14 @@
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+
+    &__description {
+      margin-bottom: 0.5rem;
+    }
+  }
+
   &__description {
     color: var(--color-tertiary-blue);
     font-size: 1.8rem;

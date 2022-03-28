@@ -10,8 +10,10 @@ import { soloGameActions } from './store/soloGame';
 import TimerContext from './context/timerContext';
 import { multiplayerGameActions } from './store/multiplayerGame';
 import MultiplayerGameOver from './components/MultiplayerGameOver/MultiplayerGameOver';
+import Menu from './components/Menu/Menu';
 
 function App() {
+  const [menuModalDisplayed, setMenuModalDisplayed] = useState(false);
   const [multiplayerGameOverDisplayed, setMultiplayerGameOverDisplayed] =
     useState(false);
   const [render, setRender] = useState(false);
@@ -55,6 +57,17 @@ function App() {
     setSetupNewGameDisplayed(false);
     timerCtx.startTimer();
   };
+
+  const openMenuModal = () => {
+    setMenuModalDisplayed(true);
+    timerCtx.pauseTimer();
+  };
+
+  const closeMenuModal = () => {
+    setMenuModalDisplayed(false);
+    timerCtx.startTimer();
+  };
+
   const setupNewGame = () => {
     setGameInitialized(false);
     dispatch(soloGameActions.cleanResults());
@@ -91,6 +104,7 @@ function App() {
       ) : (
         <>
           <Game
+            openMenuModal={openMenuModal}
             render={render}
             openRestartGameModal={openRestartGameModal}
             openSetupNewGameModal={openSetupNewGameModal}
@@ -139,6 +153,13 @@ function App() {
               buttonLeftClickFn={setupNewGame}
               buttonRightTextContent="Cancel"
               buttonRightClickFn={closeSetupNewGameModal}
+            />
+          )}
+          {menuModalDisplayed && (
+            <Menu
+              openRestartGameModal={openRestartGameModal}
+              openSetupNewGameModal={openSetupNewGameModal}
+              closeMenuModal={closeMenuModal}
             />
           )}
         </>
