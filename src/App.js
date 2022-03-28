@@ -73,12 +73,16 @@ function App() {
     setMultiplayerGameOverDisplayed(false);
   };
 
-  let multiplayerGameOverMessage;
-  if (players[0].score === players[1].score) {
-    multiplayerGameOverMessage = `It's a tie!`;
-  } else {
-    multiplayerGameOverMessage = `Player ${players[0].player} Wins!`;
-  }
+  const getMultiplayerGameOverMessage = () => {
+    let multiplayerGameOverMessage;
+    if (players[0].score === players[1].score) {
+      multiplayerGameOverMessage = `It's a tie!`;
+    } else {
+      multiplayerGameOverMessage = `Player ${players[0].player} Wins!`;
+    }
+
+    return multiplayerGameOverMessage;
+  };
 
   return (
     <div className="App">
@@ -111,7 +115,7 @@ function App() {
               buttonLeftTextContent="Restart"
               buttonRightTextContent="Setup New Game"
               buttonRightClickFn={setupNewGame}
-              message={multiplayerGameOverMessage}
+              message={getMultiplayerGameOverMessage()}
               description="Game over! Here are the results..."
             >
               <MultiplayerGameOver players={players} />
