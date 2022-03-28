@@ -15,6 +15,16 @@ $transition-time: 0.25s;
     padding: 0.7rem 2rem;
   }
 
+  &--menu {
+    @extend .button;
+    padding: 1.5rem 3rem;
+    border-radius: 5rem;
+
+    @media screen and (max-width: 350px) {
+      padding: 0.7rem 2rem;
+    }
+  }
+
   &--dark {
     @extend .button;
     background-color: var(--color-quinary-blue);

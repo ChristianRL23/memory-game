@@ -1,9 +1,12 @@
 import './Button.scss';
 
-const Button = ({ textContent, color, onClick, selected }) => {
+const Button = ({ textContent, color, onClick, selected, menu }) => {
   if (selected === undefined) {
     return (
-      <button onClick={onClick} className={`button--${color}`}>
+      <button
+        onClick={onClick}
+        className={`button--${color} ${menu ? 'button--menu' : ''}`}
+      >
         {textContent}
       </button>
     );

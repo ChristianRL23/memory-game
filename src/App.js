@@ -48,6 +48,7 @@ function App() {
   const closeRestartGameModal = () => {
     setRestartGameDisplayed(false);
     timerCtx.startTimer();
+    closeMenuModal();
   };
   const openSetupNewGameModal = () => {
     setSetupNewGameDisplayed(true);
@@ -56,6 +57,7 @@ function App() {
   const closeSetupNewGameModal = () => {
     setSetupNewGameDisplayed(false);
     timerCtx.startTimer();
+    closeMenuModal();
   };
 
   const openMenuModal = () => {
@@ -75,6 +77,7 @@ function App() {
     setGameOverDisplayed(false);
     setMultiplayerGameOverDisplayed(false);
     closeSetupNewGameModal();
+    closeMenuModal();
   };
 
   const restartGame = () => {
@@ -84,6 +87,7 @@ function App() {
     setRender((lastState) => !lastState);
     setGameOverDisplayed(false);
     setMultiplayerGameOverDisplayed(false);
+    closeMenuModal();
   };
 
   const getMultiplayerGameOverMessage = () => {

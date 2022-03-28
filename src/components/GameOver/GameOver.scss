@@ -4,6 +4,10 @@
     font-size: 4.5rem;
     color: var(--color-quinary-blue);
     margin-bottom: 1.5rem;
+
+    @media screen and (max-width: 500px) {
+      font-size: 3.5rem;
+    }
   }
   &__description {
     margin-bottom: 3.5rem;
@@ -13,5 +17,9 @@
   &__buttons {
     display: flex;
     gap: 1.5rem;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   }
 }

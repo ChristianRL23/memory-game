@@ -9,17 +9,26 @@ const Menu = ({
 }) => {
   return (
     <Modal>
-      <Button
-        onClick={openRestartGameModal}
-        color="orange"
-        textContent="Restart"
-      />
-      <Button
-        onClick={openSetupNewGameModal}
-        color="gray"
-        textContent="New Game"
-      />
-      <Button onClick={closeMenuModal} color="gray" textContent="Resume Game" />
+      <div className="menu">
+        <Button
+          menu
+          onClick={openRestartGameModal}
+          color="orange"
+          textContent="Restart"
+        />
+        <Button
+          menu
+          onClick={openSetupNewGameModal}
+          color="gray"
+          textContent="New Game"
+        />
+        <Button
+          menu
+          onClick={closeMenuModal}
+          color="gray"
+          textContent="Resume Game"
+        />
+      </div>
     </Modal>
   );
 };

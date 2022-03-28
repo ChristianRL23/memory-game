@@ -20,11 +20,13 @@ const GameOver = ({
       {children}
       <div className="modal__buttons">
         <Button
+          menu
           onClick={buttonLeftClickFn}
           textContent={buttonLeftTextContent}
           color="orange"
         />
         <Button
+          menu
           onClick={buttonRightClickFn}
           textContent={buttonRightTextContent}
           color="gray"
