@@ -23,7 +23,8 @@
     &--6 {
       @extend .solo__grid;
       gap: 1rem;
-      width: 39%;
+      max-width: 42rem;
+      width: 100%;
       grid-template-columns: repeat(6, 1fr);
     }
   }

@@ -4,7 +4,7 @@
   perspective: 1000px;
 
   &--6 {
-    height: 6rem;
+    height: 100%;
     &__inner {
       &--no-flipped {
         height: 100%;
@@ -45,12 +45,15 @@
         background-color: var(--color-secondary-blue);
         color: var(--color-primary-white);
         overflow: auto;
-        padding: 1rem;
         transform: rotateY(180deg);
         transition: background-color 0.3s;
-        font-size: 3.1rem;
+        font-size: 2.8rem;
         text-align: center;
         font-weight: 700;
+
+        @media screen and (max-width: 450px) {
+          font-size: 2.5rem;
+        }
 
         &--pair {
           @extend .chip--6__inner__back;
