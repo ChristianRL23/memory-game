@@ -78,6 +78,7 @@ const Multiplayer = ({ render, displayGameOverModal }) => {
       <footer className="multiplayer__footer">
         {players.map((player) => (
           <MultiplayerFooterItem
+            players={players.length}
             key={player.player}
             description={`Player ${player.player}`}
             value={player.score}

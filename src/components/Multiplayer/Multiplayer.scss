@@ -2,10 +2,20 @@
   &__grid {
     margin: 0 auto;
     display: grid;
+    height: 40rem;
+
+    @media screen and (max-width: 370px) {
+      height: 35rem;
+    }
+
+    @media screen and (max-width: 315px) {
+      height: 30rem;
+    }
 
     &--4 {
       @extend .multiplayer__grid;
-      width: 35%;
+      max-width: 40rem;
+      width: 100%;
       gap: 1.5rem;
       grid-template-columns: repeat(4, 1fr);
     }
@@ -13,7 +23,8 @@
     &--6 {
       @extend .multiplayer__grid;
       gap: 1rem;
-      width: 39%;
+      max-width: 42rem;
+      width: 100%;
       grid-template-columns: repeat(6, 1fr);
     }
   }
@@ -24,5 +35,9 @@
     display: flex;
     justify-content: center;
     gap: 3rem;
+
+    @media screen and (max-width: 840px) {
+      gap: 1rem;
+    }
   }
 }
