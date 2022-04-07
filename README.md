@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+<h1 align="center">Memory Game</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
 
-## Available Scripts
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" >
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" >
+  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" >
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" >
+  <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" >
+  <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" >
+  <img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" > 
 
-In the project directory, you can run:
+</p>
 
-### `npm start`
+*<p align="center">A game to have fun and train the most complex object in the universe, the brain.</p>*
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p float="left">
+  <img src="/images/solo.jpg" width="700" >
+  <img src="/images/multiplayer.jpg" width="700" >
+  <img src="/images/responsive.jpg" width="700" >
+</p>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2>Table of contents</h2>
+<ul>
+  <li> <a href="#demo">Demo</a></li>
+  <li> <a href="#general-info">General info</a></li>
+  <li> <a href="#technologies-used">Technologies used</a></li>
+  <li> <a href="#features">Features</a></li>
+  <li> <a href="#installation">Installation</a></li>
+</ul>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h3 id="demo">Demo</h3>
+The app is ready to be used: https://memory-game-rl.netlify.app
 
-### `npm run eject`
+<h3 id="general-info">General info</h3>
+Have fun playing Memory Game alone or with up to 4 friends! You can choose between two themes, icons or numbers. Also, you choose the difficulty, choosing a 4x4 or 6x6 grid.
+<h3 id="technologies-used">Technologies used</h3>
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>  
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>  
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+  <li><a href="https://reactjs.org/">React</a></li>
+    <ul>
+      <li><a href="https://reactjs.org/docs/hooks-intro.html">Hooks</a></li>
+      <li><a href="https://reactjs.org/docs/context.html#api">Context API</a></li>
+      <li><a href="https://www.npmjs.com/package/react-responsive">React Responsive</a></li>
+      <li><a href="https://www.npmjs.com/package/react-timer-hook">React Timer Hook</a></li>
+    </ul>
+  <li><a href="https://redux.js.org/">Redux</a></li>
+    <ul>
+      <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></li>
+    </ul>
+  <li><a href="https://sass-lang.com/">SASS / SCSS</a></li>
+  <li><a href="https://fontawesome.com">Font Awesome</a></li>
+  <li><a href="https://git-scm.com/">Git</a></li>
+</ul>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h3 id="features">Features</h3>
+<ul>
+  <li>Choose to play solo or up to four players.</li>
+  <li>Choose between two themes, icons or numbers.</li>
+  <li>Choose between two grids, 4x4 or 6x6.</li>
+  <li>Being able to start a new game or restart during a match.</li>
+  <li>Show the results at the end of the match in a modal.</li>
+  <li>Use of a library for better state management.</li>
+  <li>Responsive design.</li>
+</ul>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h3 id="installation">Installation</h3>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone this repository
+   ```sh
+    git clone https://github.com/ChristianRL23/memory-game.git
+   ```
+2. Go into the repository
+   ```sh
+   cd memory-game
+   ```
+3. Install dependencies
+   ```sh
+   npm install
+   ```
+4. Run the app
+   ```sh
+   npm start
+   ```
+---
+<p align="center">
+  <a href="https://restcountries.com/">Portfolio</a> &nbsp;&middot;&nbsp;
+  <a href="https://restcountries.com/">LinkedIn</a> &nbsp;&middot;&nbsp;
+  <a href="https://restcountries.com/">Email</a> &nbsp;&middot;&nbsp;
+  <a href="https://restcountries.com/">GitHub</a>   
+</p>
