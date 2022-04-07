@@ -69,7 +69,7 @@ Have fun playing Memory Game alone or with up to 4 friends! You can choose betwe
   <li>Choose between two grids, 4x4 or 6x6.</li>
   <li>Being able to start a new game or restart during a match.</li>
   <li>Show the results at the end of the match in a modal.</li>
-  <li>Use of a library for better state management.</li>
+  <li>Use of Redux and Context API for better state management.</li>
   <li>Responsive design.</li>
 </ul>
 
