@@ -94,8 +94,6 @@ Have fun playing Memory Game alone or with up to 4 friends! You can choose betwe
    ```
 ---
 <p align="center">
-  <a href="https://restcountries.com/">Portfolio</a> &nbsp;&middot;&nbsp;
-  <a href="https://restcountries.com/">LinkedIn</a> &nbsp;&middot;&nbsp;
-  <a href="https://restcountries.com/">Email</a> &nbsp;&middot;&nbsp;
-  <a href="https://restcountries.com/">GitHub</a>   
+  <a href="https://christianramirezlara.com">Portfolio</a> &nbsp;&middot;&nbsp;
+  <a href="https://www.linkedin.com/in/christianramirezlara">LinkedIn</a>
 </p>
